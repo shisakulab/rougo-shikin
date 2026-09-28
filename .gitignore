@@ -1,0 +1,17 @@
+# 個人の設定・資産額（画面の変更で自動保存される）。絶対に公開しない
+config.json
+config.json.tmp
+*.tmp
+*.bak
+
+# 実データ入りのスクリーンショット・メモ置き場
+private/
+screenshots/
+
+# OS・エディタ
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.claude/
+__pycache__/

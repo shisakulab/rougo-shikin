@@ -1,0 +1,167 @@
+{
+  "version": 1,
+  "savedAt": "",
+  "links": {
+    "repo": "https://github.com/shisakulab/rougo-shikin",
+    "article": ""
+  },
+  "view": {
+    "real": true,
+    "trials": 5000
+  },
+  "params": {
+    "asOf": 2026,
+    "birthYear": [
+      1966,
+      1966
+    ],
+    "retireYear": [
+      2026,
+      2026
+    ],
+    "assets": 2000,
+    "severance": [
+      1500,
+      0
+    ],
+    "life": [
+      95,
+      95
+    ],
+    "single": 70,
+    "pension": [
+      16,
+      7
+    ],
+    "kosei": [
+      9,
+      0
+    ],
+    "survivor": true,
+    "claim": [
+      65,
+      65
+    ],
+    "netRate": 90,
+    "slide": 0.5,
+    "living": 25,
+    "cut75": 0,
+    "cut85": 0,
+    "medical": [
+      0,
+      0
+    ],
+    "medFrom": [
+      0,
+      0
+    ],
+    "care": [
+      0,
+      0
+    ],
+    "careFrom": [
+      85,
+      85
+    ],
+    "travel": 1,
+    "travelFrom": 2026,
+    "travelUntil": 2035,
+    "cars": 1,
+    "carYears": [
+      2031,
+      2041
+    ],
+    "carPrice": [
+      200,
+      200
+    ],
+    "carEvery": 0,
+    "carMaint": 30,
+    "driveUntil": 80,
+    "oneCarFrom": 0,
+    "earmark": false,
+    "safeRate": 1.0,
+    "preWork": [
+      0,
+      0
+    ],
+    "work": [
+      20,
+      0
+    ],
+    "workUntil": [
+      65,
+      65
+    ],
+    "strategy": 0,
+    "cashYears": 2,
+    "preCashYears": 1,
+    "bondYears": 5,
+    "crashRule": false,
+    "crashDD": 20,
+    "stockCap": 100,
+    "jpShare": 0,
+    "jpTaxable": false,
+    "jpYield": 3.0,
+    "stock": 50,
+    "bond": 40,
+    "inflation": 2,
+    "stockRet": 5.0,
+    "stockVol": 18,
+    "jpRet": 5.0,
+    "jpVol": 20,
+    "bondRet": 1.0,
+    "bondVol": 0,
+    "cashRet": 0.2
+  },
+  "samples": [
+    {
+      "name": "モデル：会社員＋専業主婦",
+      "params": {}
+    },
+    {
+      "name": "モデル：共働き",
+      "params": {
+        "assets": 2500,
+        "severance": [
+          1500,
+          1000
+        ],
+        "pension": [
+          16,
+          12
+        ],
+        "kosei": [
+          9,
+          5
+        ],
+        "work": [
+          20,
+          10
+        ],
+        "living": 30,
+        "travel": 2,
+        "cars": 2
+      }
+    },
+    {
+      "name": "モデル：70歳まで働いて繰下げ",
+      "params": {
+        "work": [
+          20,
+          5
+        ],
+        "workUntil": [
+          70,
+          70
+        ],
+        "claim": [
+          70,
+          70
+        ]
+      }
+    }
+  ],
+  "presets": [],
+  "reviews": []
+}
