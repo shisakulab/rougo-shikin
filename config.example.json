@@ -7,7 +7,7 @@
   },
   "view": {
     "real": true,
-    "trials": 5000
+    "trials": 10000
   },
   "params": {
     "asOf": 2026,
@@ -19,22 +19,22 @@
       2026,
       2026
     ],
-    "assets": 2000,
+    "assets": 2843,
     "severance": [
-      1500,
+      0,
       0
     ],
     "life": [
-      95,
-      95
+      84,
+      89
     ],
-    "single": 70,
+    "single": 56,
     "pension": [
-      16,
-      7
+      16.7,
+      7.1
     ],
     "kosei": [
-      9,
+      9.6,
       0
     ],
     "survivor": true,
@@ -42,9 +42,9 @@
       65,
       65
     ],
-    "netRate": 90,
-    "slide": 0.5,
-    "living": 25,
+    "netRate": 87,
+    "slide": 0.2,
+    "living": 26.4,
     "cut75": 0,
     "cut85": 0,
     "medical": [
@@ -56,17 +56,17 @@
       0
     ],
     "care": [
-      0,
-      0
+      9.0,
+      9.0
     ],
     "careFrom": [
-      85,
-      85
+      79,
+      84
     ],
-    "travel": 1,
+    "travel": 0,
     "travelFrom": 2026,
     "travelUntil": 2035,
-    "cars": 1,
+    "cars": 0,
     "carYears": [
       2031,
       2041
@@ -80,13 +80,13 @@
     "driveUntil": 80,
     "oneCarFrom": 0,
     "earmark": false,
-    "safeRate": 1.0,
+    "safeRate": 1.8,
     "preWork": [
       0,
       0
     ],
     "work": [
-      20,
+      28.5,
       0
     ],
     "workUntil": [
@@ -100,19 +100,23 @@
     "crashRule": false,
     "crashDD": 20,
     "stockCap": 100,
-    "jpShare": 0,
+    "jpShare": 50,
     "jpTaxable": false,
     "jpYield": 3.0,
-    "stock": 50,
-    "bond": 40,
-    "inflation": 2,
-    "stockRet": 5.0,
-    "stockVol": 18,
-    "jpRet": 5.0,
-    "jpVol": 20,
-    "bondRet": 1.0,
+    "stock": 25,
+    "bond": 18,
+    "inflation": 2.0,
+    "stockRet": 7.6,
+    "stockVol": 20.4,
+    "jpRet": 7.0,
+    "jpVol": 19.2,
+    "bondRet": 1.8,
     "bondVol": 0,
-    "cashRet": 0.2
+    "cashRet": 0.3,
+    "careYears": [
+      5,
+      5
+    ]
   },
   "samples": [
     {
@@ -122,38 +126,26 @@
     {
       "name": "モデル：共働き",
       "params": {
-        "assets": 2500,
-        "severance": [
-          1500,
-          1000
-        ],
         "pension": [
-          16,
-          12
+          16.7,
+          13.5
         ],
         "kosei": [
-          9,
-          5
-        ],
-        "work": [
-          20,
-          10
-        ],
-        "living": 30,
-        "travel": 2,
-        "cars": 2
+          9.6,
+          6.3
+        ]
       }
     },
     {
       "name": "モデル：70歳まで働いて繰下げ",
       "params": {
         "work": [
-          20,
-          5
+          26.5,
+          0
         ],
         "workUntil": [
           70,
-          70
+          65
         ],
         "claim": [
           70,

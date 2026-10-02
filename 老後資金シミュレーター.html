@@ -449,7 +449,7 @@ details.assume ul{margin:12px 0 0;padding-left:1.2em;color:var(--ink-2);display:
           <li>車は指定した時期に1台ずつ、それぞれの価格で買い、買い替え間隔が0なら買い替えません。買い替えのときも同じ価格とします。間隔を入れた場合は、その間隔ごとに買い替えます（運転をやめる年齢までに間隔の半分以上使える場合だけ）。「1台に減らす年齢」を過ぎたら2台目は買い替えません。維持費は基準年から、今の台数分かかります。</li>
           <li>「国債で取っておく」を選ぶと、旅行代と車の購入費（2台目・買い替え分も含むすべて）をインフレ込みで見積もり、国債の利回りで割り引いた額を今の資産から先に取り分けます（利回りは一定と仮定）。取り分けた分は運用の配分に含めず、資産グラフと収支表では合計に含めます。資金が尽きたかどうかは運用資産で判定します。</li>
           <li>「毎年、比率を元に戻す」は株式・債券・現金の比率を毎年リバランスします。「分けて持つ」は、毎年の取り崩しを現金→国債→株の順に払い、年末に翌年からの必要額に合わせて現金と国債を補充します。暴落時ルールがオンなら、株が直近の高値から指定した率以上下がっている年は株を売らず、国債から現金を補充します（国債が足りなければ株を売ります）。</li>
-          <li>リターンは対数正規分布です。相関は全世界株と日本株0.65、株と債券0.2としています。日本株の配当は値上がり益と合わせたリターンに含めて扱い、NISAの外なら配当に約20%の税金がかかる分だけリターンを差し引きます。</li>
+          <li>リターンは対数正規分布です。相関は全世界株と日本株0.69（GPIF の外国株式と国内株式の相関）、株と債券0.2としています。日本株の配当は値上がり益と合わせたリターンに含めて扱い、NISAの外なら配当に約20%の税金がかかる分だけリターンを差し引きます。</li>
           <li>医療費の上乗せは指定した年齢から、介護・施設費は指定した年齢から指定した年数（0なら寿命の想定まで）、それぞれ生きている間だけかかります（どちらもインフレ率で上がります）。「退職翌年の税・保険料」は、それぞれが退職した翌年に一度だけ払う額として生活費に上乗せします（インフレ率で上がります）。運用益の税金（NISA枠外は約20%）、住宅の修繕費、介護の一時費用（住宅改修など）は含みません。必要に応じて生活費や医療費に上乗せしてください。</li>
           <li>この結果は仮定に基づく試算で、将来を保証するものではありません。大きな判断の前にはFP等の専門家に相談してください。</li>
         </ul>
@@ -466,11 +466,17 @@ details.assume ul{margin:12px 0 0;padding-left:1.2em;color:var(--ink-2);display:
         <li>遺族厚生年金（亡くなった方の老齢厚生年金の4分の3）・中高齢寡婦加算：<a href="https://www.nenkin.go.jp/" target="_blank" rel="noopener">日本年金機構</a>「遺族年金」</li>
         <li>生活費の目安：総務省統計局「<a href="https://www.stat.go.jp/data/kakei/" target="_blank" rel="noopener">家計調査</a>」（高齢夫婦無職世帯の消費支出）</li>
         <li>介護・施設費の目安（月額平均9.0万円、在宅5.3万円・施設13.8万円、平均期間55.0か月）：生命保険文化センター「2024（令和6）年度 生命保険に関する全国実態調査」（<a href="https://www.jili.or.jp/lifeplan/lifesecurity/1116.html" target="_blank" rel="noopener">介護にはどれくらいの費用・期間がかかる？</a>）</li>
-        <li>年金額の初期値（夫 月16万円・妻 月7万円）の目安：厚生労働省「<a href="https://www.mhlw.go.jp/stf/houdou/0000191631_00020.html" target="_blank" rel="noopener">令和8年度の年金額改定についてお知らせします</a>」（標準的な夫婦の年金額 月237,279円、老齢基礎年金の満額 月70,608円）。標準的な夫婦は「夫が平均的な賃金で40年働いた」場合のモデルで、実際に受け取っている額の平均ではありません</li>
-        <li>インフレ率の初期値（年2%）：日本銀行の「<a href="https://www.boj.or.jp/mopo/outline/index.htm" target="_blank" rel="noopener">物価安定の目標</a>」（消費者物価の前年比上昇率2%）に合わせた仮定です。実際の物価上昇率は、年によってこれより高いことも低いこともあります</li>
-        <li>寿命の想定の初期値（95歳）：平均寿命（男81.35年・女87.33年）より長めに取った仮定です。90歳まで生きる人の割合は男26.7%・女50.8%（厚生労働省「<a href="https://www.mhlw.go.jp/toukei/saikin/hw/life/life25/index.html" target="_blank" rel="noopener">令和7年簡易生命表の概況</a>」）</li>
-        <li>株・国債・現金の期待リターンとリスク、相関、年金の手取り率と目減り、国債の利回り、現金の金利の初期値は、筆者が置いた仮定で、公的な推計ではありません。国債と現金の利回りは、今の金利より低めにしています</li>
-        <li>初期値と「モデル：〜」のプリセットは説明用の架空の世帯で、平均値そのものではありません。初期値には介護・施設費を入れていません（入れると確率は下がります）。</li>
+        <li>初期値は、次の公的統計・公表資料の平均値を組み合わせた架空の世帯です（夫婦とも60歳、夫は今年定年）。</li>
+        <li>年金（夫 月16.7万円・妻 月7.1万円、うち夫の厚生年金9.6万円）：厚生労働省「<a href="https://www.mhlw.go.jp/stf/houdou/0000191631_00020.html" target="_blank" rel="noopener">令和8年度の年金額改定について</a>」の標準的な夫婦（月237,279円＝基礎年金70,608円×2＋夫の厚生年金96,063円）。夫が平均的な賃金で40年働いた場合のモデルで、実際に受け取っている額の平均ではありません。共働きのプリセットの妻（月13.5万円、うち厚生年金6.3万円）は同じ資料の「厚生年金期間中心の女性」の平均</li>
+        <li>年金の手取り率87%：総務省統計局「<a href="https://www.stat.go.jp/data/kakei/" target="_blank" rel="noopener">家計調査</a>」2025年の高齢夫婦無職世帯の、実収入254,395円に対する非消費支出（税・社会保険料）32,850円の割合から</li>
+        <li>生活費（月26.4万円）・一人になった後の生活費（56%）：同じく家計調査2025年の高齢夫婦無職世帯の消費支出263,979円と、高齢単身無職世帯の消費支出148,445円。旅行・車・医療費はこの中に含まれるので、初期値では別に足していません</li>
+        <li>金融資産（2,843万円）と運用の配分（株25%・国債18%・現金57%）：総務省統計局「家計調査（貯蓄・負債編）」2025年の世帯主60〜69歳の貯蓄現在高の平均と、その内訳（有価証券・生命保険など・預貯金）。退職金を受け取った世帯も含む平均なので、退職金は0にしています</li>
+        <li>夫の60〜64歳の収入（手取り月28.5万円）：厚生労働省「<a href="https://www.mhlw.go.jp/toukei/itiran/roudou/chingin/kouzou/z2025/index.html" target="_blank" rel="noopener">令和7年賃金構造基本統計調査</a>」の60〜64歳男性の所定内給与（月35.85万円）の約8割（手取りの割合は筆者の概算）</li>
+        <li>寿命の想定（夫84歳・妻89歳）：厚生労働省「<a href="https://www.mhlw.go.jp/toukei/saikin/hw/life/life25/index.html" target="_blank" rel="noopener">令和7年簡易生命表</a>」の60歳の平均余命（男23.86年・女29.07年）。平均余命は半分くらいの人がそれより長生きする年齢で、90歳まで生きる人の割合は男26.7%・女50.8%です</li>
+        <li>介護・施設費（月9.0万円を寿命までの最後の5年間）：生命保険文化センターの平均（月9.0万円、期間55.0か月）。最後の5年間にかかるとしたのは筆者の置き方です</li>
+        <li>株の期待リターン・リスク（全世界株 7.6%・20.4%、日本株 7.0%・19.2%、半分ずつ）と相関：GPIF「<a href="https://www.gpif.go.jp/gpif/15324685gpif/5th_policy_asset_mix_details_jp.pdf" target="_blank" rel="noopener">第5期中期目標期間における基本ポートフォリオについて</a>」の外国株式・国内株式（成長型経済移行・継続ケース）</li>
+        <li>インフレ率（年2%）：日本銀行の「<a href="https://www.boj.or.jp/mopo/outline/index.htm" target="_blank" rel="noopener">物価安定の目標</a>」、厚生労働省「<a href="https://www.mhlw.go.jp/content/001270476.pdf" target="_blank" rel="noopener">令和6年財政検証</a>」の成長型経済移行・継続ケースの物価上昇率。年金の目減り（年0.2%）は、同じケースで所得代替率が2024年度61.2%から2037年度57.6%に下がることを年平均に直した筆者の概算</li>
+        <li>国債の利回り（税引後1.8%）：財務省「<a href="https://www.mof.go.jp/jgbs/individual/kojinmuke/index.html" target="_blank" rel="noopener">個人向け国債</a>」2026年9月募集の固定5年（年2.24%、税引後1.7849%）。現金の金利（0.3%）：大手銀行の普通預金金利0.40%（2026年10月時点）の税引後</li>
       </ul>
     </details>
     <p class="links" id="footLinks" hidden></p>
@@ -492,15 +498,15 @@ const TMAX = 72, NMAX = 10000;
    下の値は、それを読めないとき（HTMLファイルを直接開いたときなど）だけ使う予備 */
 const DEFAULTS_FILE = 'config.example.json';
 let BASE = {
-  asOf:2026, birthYear:[1966,1966], retireYear:[2026,2026], assets:2000, severance:[1500,0], life:[95,95],
-  single:70, pension:[16,7], kosei:[9,0], survivor:true, claim:[65,65], netRate:90, slide:0.5, living:25,
-  cut75:0, cut85:0, medical:[0,0], medFrom:[0,0], care:[0,0], careFrom:[85,85], travel:1, travelFrom:2026,
-  travelUntil:2035, cars:1, carYears:[2031,2041], carPrice:[200,200], carEvery:0, carMaint:30, driveUntil:80,
-  oneCarFrom:0, earmark:false, safeRate:1.0, preWork:[0,0], work:[20,0], workUntil:[65,65], strategy:0, cashYears:2,
-  preCashYears:1, bondYears:5, crashRule:false, crashDD:20, stockCap:100, jpShare:0, jpTaxable:false, jpYield:3.0,
-  stock:50, bond:40, inflation:2, stockRet:5.0, stockVol:18, jpRet:5.0, jpVol:20, bondRet:1.0, bondVol:0,
-  cashRet:0.2, inflVol:0, bondFloat:0, bondLink:0, linkReal:0.5,
-  retTax:[0,0], careYears:[0,0]
+  asOf:2026, birthYear:[1966,1966], retireYear:[2026,2026], assets:2843, severance:[0,0], life:[84,89],
+  single:56, pension:[16.7,7.1], kosei:[9.6,0], survivor:true, claim:[65,65], netRate:87, slide:0.2, living:26.4,
+  cut75:0, cut85:0, medical:[0,0], medFrom:[0,0], care:[9.0,9.0], careFrom:[79,84], travel:0, travelFrom:2026,
+  travelUntil:2035, cars:0, carYears:[2031,2041], carPrice:[200,200], carEvery:0, carMaint:30, driveUntil:80,
+  oneCarFrom:0, earmark:false, safeRate:1.8, preWork:[0,0], work:[28.5,0], workUntil:[65,65], strategy:0, cashYears:2,
+  preCashYears:1, bondYears:5, crashRule:false, crashDD:20, stockCap:100, jpShare:50, jpTaxable:false, jpYield:3.0,
+  stock:25, bond:18, inflation:2.0, stockRet:7.6, stockVol:20.4, jpRet:7.0, jpVol:19.2, bondRet:1.8, bondVol:0,
+  cashRet:0.3, inflVol:0, bondFloat:0, bondLink:0, linkReal:0.5,
+  retTax:[0,0], careYears:[5,5]
 };
 let PRESETS = [];
 let LINKS = {}; // config.example.json の links（repo: GitHub のURL、article: 解説記事のURL）
@@ -521,12 +527,12 @@ const GROUPS = [
   {title:'寿命の想定', note:'持病などで短めに見積もる人は、その年齢を入れます。二人の年齢を違う値にすると、一人になった後の期間も計算されます。', items:[
     {t:'head'},
     {t:'pair', k:'life', label:'この年齢まで資金を用意', unit:'歳', min:60, max:110, step:1},
-    {t:'one', k:'single', label:'一人になった後の生活費', sub:'二人のときに対する割合', unit:'%', min:30, max:100, step:5}
+    {t:'one', k:'single', label:'一人になった後の生活費', sub:'二人のときに対する割合', unit:'%', min:30, max:100, step:1}
   ]},
   {title:'年金', note:'遺族厚生年金は、亡くなった方の厚生年金（繰上げ・繰下げをしない場合の額）の4分の3から、残された方自身の厚生年金を引いた差額です。非課税なので手取り率はかけません。厚生年金の月額が分からないときは、年金の月額から基礎年金（満額で月6.9万円）を引いた額が目安です。', items:[
     {t:'head'},
-    {t:'pair', k:'pension', label:'年金の月額', sub:'65歳から受け取る場合', unit:'万円', min:0, max:60, step:0.5},
-    {t:'pair', k:'kosei', label:'うち厚生年金の月額', sub:'ねんきん定期便の「老齢厚生年金」', unit:'万円', min:0, max:60, step:0.5},
+    {t:'pair', k:'pension', label:'年金の月額', sub:'65歳から受け取る場合', unit:'万円', min:0, max:60, step:0.1},
+    {t:'pair', k:'kosei', label:'うち厚生年金の月額', sub:'ねんきん定期便の「老齢厚生年金」', unit:'万円', min:0, max:60, step:0.1},
     {t:'pair', k:'claim', label:'受け取り開始年齢', unit:'歳', min:60, max:75, step:1},
     {t:'fx'},
     {t:'one', k:'netRate', label:'手取り率', sub:'月額が額面なら85〜90%', unit:'%', min:50, max:100, step:1},
@@ -534,7 +540,7 @@ const GROUPS = [
     {t:'chk', k:'survivor', label:'一人になった後、遺族厚生年金を受け取る'}
   ]},
   {title:'支出', items:[
-    {t:'one', k:'living', label:'生活費（二人の月額）', unit:'万円', min:0, max:200, step:0.5},
+    {t:'one', k:'living', label:'生活費（二人の月額）', unit:'万円', min:0, max:200, step:0.1},
     {t:'one', k:'cut75', label:'75歳から生活費を減らす', sub:'若い方の年齢で判定', unit:'%', min:0, max:60, step:5},
     {t:'one', k:'cut85', label:'85歳から生活費を減らす', unit:'%', min:0, max:60, step:5},
     {t:'one', k:'travel', label:'旅行（月額）', unit:'万円', min:0, max:100, step:0.5},
@@ -565,7 +571,7 @@ const GROUPS = [
   {title:'働いて得る収入', note:'毎年「収入 −（生活費・旅行・車・医療費）」の差を資産に足し引きします。退職までの収入を入れると、退職までに貯まる分も計算に入ります。', items:[
     {t:'head'},
     {t:'pair', k:'preWork', label:'退職までの収入（月額・手取り）', sub:'それぞれが退職する年まで', unit:'万円', min:0, max:200, step:0.5},
-    {t:'pair', k:'work', label:'退職後の収入（月額・手取り）', unit:'万円', min:0, max:100, step:0.5},
+    {t:'pair', k:'work', label:'退職後の収入（月額・手取り）', unit:'万円', min:0, max:100, step:0.1},
     {t:'pair', k:'workUntil', label:'退職後は何歳まで働くか', sub:'この年齢になる前まで', unit:'歳', min:55, max:100, step:1}
   ]},
   {title:'運用', note:'「分けて持つ」の年数は、退職後は取り崩す額（生活費＋旅行・車など − 年金 − 収入）で、退職前は支出そのもので数えます。平常時は毎年、株を売って現金と国債を決めた年数分に戻し、余った国債は株に回します。', items:[
@@ -653,7 +659,7 @@ function buildForm(){
         sec.appendChild(el('div', {class:'frow'}, [labelEl(s.id, it.label), el('div',{class:'inp'},[s])]));
       } else if (it.t === 'alloc'){
         const mk = (k, name) => {
-          const r = el('input', {type:'range', id:'f-'+k, min:0, max:100, step:5, 'aria-label':name+'の比率'});
+          const r = el('input', {type:'range', id:'f-'+k, min:0, max:100, step:1, 'aria-label':name+'の比率'});
           return el('div', {class:'sl'}, [el('span', {text:name}), r, el('output', {id:'o-'+k, for:'f-'+k})]);
         };
         sec.appendChild(el('div', {class:'alloc'}, [
@@ -839,7 +845,7 @@ function draws(){
 function marketParams(p){
   const mu = [p.stockRet/100, p.jpRet/100, p.bondRet/100, p.cashRet/100];
   const sd = [p.stockVol/100, p.jpVol/100, p.bondVol/100, 0.005];
-  const corr = [[1,.65,.2,0],[.65,1,.2,0],[.2,.2,1,0],[0,0,0,1]];
+  const corr = [[1,.69,.2,0],[.69,1,.2,0],[.2,.2,1,0],[0,0,0,1]];
   const S = [], L = [], m = [];
   for (let i=0;i<NA;i++){ S.push([]); L.push([0,0,0,0]); for (let j=0;j<NA;j++) S[i][j] = Math.log(1 + corr[i][j]*sd[i]*sd[j]/((1+mu[i])*(1+mu[j]))); }
   for (let i=0;i<NA;i++){
