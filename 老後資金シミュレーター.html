@@ -441,7 +441,8 @@ details.assume ul{margin:12px 0 0;padding-left:1.2em;color:var(--ink-2);display:
         <summary>計算の前提と注意</summary>
         <ul>
           <li>計算は「基準年」の初めを起点にします。年齢は生まれた年との西暦の差で数え、過ぎた年の車の購入・旅行・退職金は、すでに資産に反映されているとみなして計算に入れません。基準年から毎年、「収入 −（生活費・旅行・車・医療費）」の差を資産に足し引きします。退職前で収入が支出を上回る年は、その分を資産に積み増し、運用に回します。退職金はそれぞれが退職する年に受け取ります。収入は、退職するまでは「退職までの収入」、退職後は「退職後の収入」を使います。「分けて持つ」では、退職前は退職金で退職後の取り崩しをまかなう予定とみなし、足りない分だけを現金・国債で用意して、残りは今から株で運用します。ただし、まだ働いている人がいる間は、生活防衛資金として支出の「退職前に現金で持つ年数」分を必ず現金で持ちます。</li>
-          <li>生活費・旅行・車・医療費・働いて得る収入は、毎年インフレ率で上がります。年金は「インフレ率 −（年金の目減り）」で伸びます。</li>
+          <li>生活費・旅行・車・医療費・働いて得る収入は、毎年インフレ率で上がります。年金は「インフレ率 −（年金の目減り）」で伸びます。「インフレ率のぶれ」を入れると、インフレ率は年ごとに上下します（前の年のずれを6割引き継ぎます。円安で物価が上がる年は全世界株の円での値上がりも大きくなりやすいとして、相関を0.3にしています）。生活費・年金などはそれぞれの未来の物価で動き、「今の価値」の表示もその物価で割り戻します。旅行・車用に取っておいた国債は、予想どおりのインフレで見積もった額を払い、ずれた分は資産から払います。</li>
+          <li>国債のうち変動金利の分は、前の年のインフレ率が予想より高かった分の半分だけ利回りが上がります（下限0.04%）。物価連動国債の分は「実質利回り＋その年のインフレ率」で増え、増えた分に約20%の税金がかかるものとします（実際の課税は利払い時と償還時）。インフレ率にぶれがあるときは、現金の金利も変動金利と同じように動きます。</li>
           <li>年金は65歳開始時の月額（今の価値）を入力します。繰上げは1か月0.4%減（1962年4月2日以降生まれ）、繰下げは1か月0.7%増（75歳まで）です。</li>
           <li>寿命の想定を過ぎた人の年金・収入・医療費はなくなり、生活費は「一人になった後の生活費」の割合になります。「遺族厚生年金を受け取る」をオンにすると、残された方に遺族厚生年金を足します。65歳以上の場合は、亡くなった方の厚生年金（繰上げ・繰下げの増減を反映しない額）の4分の3から自分の厚生年金を引いた差額です。65歳未満の場合は、自分の老齢年金と遺族厚生年金（母は40歳以上なら中高齢寡婦加算61.1万円を加算）のうち多い方とします。遺族厚生年金は非課税なので手取り率はかけません。二人とも寿命の想定が同じなら、一人になる期間がないので結果は変わりません。</li>
           <li>「75歳・85歳からの削減」は二人のうち若い方の年齢、車の運転と1台への切り替えは年上の方の年齢で判定します。</li>
@@ -449,7 +450,7 @@ details.assume ul{margin:12px 0 0;padding-left:1.2em;color:var(--ink-2);display:
           <li>「国債で取っておく」を選ぶと、旅行代と車の購入費（2台目・買い替え分も含むすべて）をインフレ込みで見積もり、国債の利回りで割り引いた額を今の資産から先に取り分けます（利回りは一定と仮定）。取り分けた分は運用の配分に含めず、資産グラフと収支表では合計に含めます。資金が尽きたかどうかは運用資産で判定します。</li>
           <li>「毎年、比率を元に戻す」は株式・債券・現金の比率を毎年リバランスします。「分けて持つ」は、毎年の取り崩しを現金→国債→株の順に払い、年末に翌年からの必要額に合わせて現金と国債を補充します。暴落時ルールがオンなら、株が直近の高値から指定した率以上下がっている年は株を売らず、国債から現金を補充します（国債が足りなければ株を売ります）。</li>
           <li>リターンは対数正規分布です。相関は全世界株と日本株0.65、株と債券0.2としています。日本株の配当は値上がり益と合わせたリターンに含めて扱い、NISAの外なら配当に約20%の税金がかかる分だけリターンを差し引きます。</li>
-          <li>医療費の上乗せは指定した年齢から、介護・施設費は指定した年齢から寿命の想定まで、それぞれ生きている間だけかかります（どちらもインフレ率で上がります）。運用益の税金（NISA枠外は約20%）、住宅の修繕費、介護の一時費用（住宅改修など）は含みません。必要に応じて生活費や医療費に上乗せしてください。</li>
+          <li>医療費の上乗せは指定した年齢から、介護・施設費は指定した年齢から指定した年数（0なら寿命の想定まで）、それぞれ生きている間だけかかります（どちらもインフレ率で上がります）。「退職翌年の税・保険料」は、それぞれが退職した翌年に一度だけ払う額として生活費に上乗せします（インフレ率で上がります）。運用益の税金（NISA枠外は約20%）、住宅の修繕費、介護の一時費用（住宅改修など）は含みません。必要に応じて生活費や医療費に上乗せしてください。</li>
           <li>この結果は仮定に基づく試算で、将来を保証するものではありません。大きな判断の前にはFP等の専門家に相談してください。</li>
         </ul>
       </details>
@@ -494,7 +495,8 @@ let BASE = {
   oneCarFrom:0, earmark:false, safeRate:1.0, preWork:[0,0], work:[20,0], workUntil:[65,65], strategy:0, cashYears:2,
   preCashYears:1, bondYears:5, crashRule:false, crashDD:20, stockCap:100, jpShare:0, jpTaxable:false, jpYield:3.0,
   stock:50, bond:40, inflation:2, stockRet:5.0, stockVol:18, jpRet:5.0, jpVol:20, bondRet:1.0, bondVol:0,
-  cashRet:0.2
+  cashRet:0.2, inflVol:0, bondFloat:0, bondLink:0, linkReal:0.5,
+  retTax:[0,0], careYears:[0,0]
 };
 let PRESETS = [];
 let LINKS = {}; // config.example.json の links（repo: GitHub のURL、article: 解説記事のURL）
@@ -509,6 +511,7 @@ const GROUPS = [
     {t:'agefx'},
     {t:'pair', k:'retireYear', label:'退職する年', sub:'過去の年なら退職済み（退職金は資産に含まれているとみなす）', unit:'年', min:2000, max:2100, step:1},
     {t:'pair', k:'severance', label:'退職金（手取り）', sub:'まだ受け取っていない分', unit:'万円', min:0, max:200000, step:100},
+    {t:'pair', k:'retTax', label:'退職翌年の税・保険料（一時）', sub:'前年の給与にかかる住民税と国民健康保険料など。目安は前年の年収のおよそ1〜2割', unit:'万円', min:0, max:2000, step:10},
     {t:'one', k:'assets', label:'基準年の初めの金融資産', sub:'預金・国債・投資信託などの合計', unit:'万円', min:0, max:500000, step:100}
   ], note:'生活費は、退職したかどうかに関係なく基準年から毎年かかります。退職する年が二人で違う場合、まだ働いている方の手取りは「退職までの収入」に入れてください（その人が退職する年まで収入として入ります）。'},
   {title:'寿命の想定', note:'持病などで短めに見積もる人は、その年齢を入れます。二人の年齢を違う値にすると、一人になった後の期間も計算されます。', items:[
@@ -537,7 +540,8 @@ const GROUPS = [
     {t:'pair', k:'medical', label:'医療費の上乗せ（月額）', sub:'生きている間だけ', unit:'万円', min:0, max:50, step:0.5},
     {t:'pair', k:'medFrom', label:'医療費を上乗せする年齢', sub:'この年齢から。0なら基準年から', unit:'歳', min:0, max:110, step:1},
     {t:'pair', k:'care', label:'介護・施設費（月額）', sub:'目安：在宅5.3万円・施設13.8万円（平均9.0万円）', unit:'万円', min:0, max:100, step:0.5},
-    {t:'pair', k:'careFrom', label:'介護・施設費がかかる年齢', sub:'この年齢から寿命の想定まで', unit:'歳', min:60, max:110, step:1}
+    {t:'pair', k:'careFrom', label:'介護・施設費がかかる年齢', sub:'この年齢から', unit:'歳', min:60, max:110, step:1},
+    {t:'pair', k:'careYears', label:'介護・施設費がかかる年数', sub:'0なら寿命の想定まで。平均は約5年', unit:'年', min:0, max:50, step:1}
   ]},
   {title:'車', items:[
     {t:'one', k:'cars', label:'台数', unit:'台', min:0, max:2, step:1},
@@ -552,7 +556,7 @@ const GROUPS = [
   ]},
   {title:'旅行と車のお金の置き場所', note:'必要な額をインフレ込みで見積もり、今の資産から先に取り分けます。取り分けた分は下の「運用」の配分には含めません。', items:[
     {t:'chk', k:'earmark', label:'旅行代と車の購入費（2台目・買い替え分も含む）は、使うまで国債で取っておく'},
-    {t:'one', k:'safeRate', label:'国債の利回り（税引後）', sub:'個人向け国債 変動10年など', unit:'%', min:0, max:5, step:0.1}
+    {t:'one', k:'safeRate', label:'国債の利回り（税引後）', sub:'個人向け国債 固定5年・変動10年など', unit:'%', min:0, max:5, step:0.1}
   ]},
   {title:'働いて得る収入', note:'毎年「収入 −（生活費・旅行・車・医療費）」の差を資産に足し引きします。退職までの収入を入れると、退職までに貯まる分も計算に入ります。', items:[
     {t:'head'},
@@ -574,10 +578,14 @@ const GROUPS = [
     {t:'chk', k:'jpTaxable', label:'日本株はNISAの外で持つ（配当に毎年約20%課税）'},
     {t:'mixnow'},
     {t:'one', k:'inflation', label:'インフレ率', unit:'%/年', min:-2, max:10, step:0.1},
+    {t:'one', k:'inflVol', label:'インフレ率のぶれ', sub:'年ごとの上下の幅（標準偏差）。0なら毎年同じ率', unit:'%', min:0, max:5, step:0.1},
     {t:'rethead'},
     {t:'ret', label:'全世界株', ks:['stockRet','stockVol']},
     {t:'ret', label:'日本株', ks:['jpRet','jpVol']},
-    {t:'ret', label:'国債', ks:['bondRet','bondVol']},
+    {t:'ret', label:'国債', sub:'個人向け国債 固定5年・変動10年など', ks:['bondRet','bondVol']},
+    {t:'one', k:'bondFloat', label:'国債のうち変動金利の割合', sub:'個人向け国債 変動10年など。物価が上がると翌年から利回りも上がる', unit:'%', min:0, max:100, step:10},
+    {t:'one', k:'bondLink', label:'国債のうち物価連動国債の割合', sub:'物価に合わせて元本が増える', unit:'%', min:0, max:100, step:10},
+    {t:'one', k:'linkReal', label:'物価連動国債の実質利回り（税引前）', sub:'物価上昇分を除いた利回り。物価で増えた元本にも約20%課税', unit:'%', min:-1, max:3, step:0.1},
     {t:'one', k:'cashRet', label:'現金の金利', unit:'%', min:-1, max:10, step:0.1}
   ]}
 ];
@@ -621,7 +629,7 @@ function buildForm(){
         sec.appendChild(el('div', {class:'prow'}, [labelEl(a.id, it.label+'（'+it.unit+'）', it.sub), el('div',{class:'inp'},[a]), el('div',{class:'inp'},[b])]));
       } else if (it.t === 'ret'){
         const a = numInput('f-'+it.ks[0], META[it.ks[0]], it.label+'の期待リターン'), b = numInput('f-'+it.ks[1], META[it.ks[1]], it.label+'のリスク');
-        sec.appendChild(el('div', {class:'prow'}, [el('span', {class:'rl', text:it.label}), el('div',{class:'inp'},[a]), el('div',{class:'inp'},[b])]));
+        sec.appendChild(el('div', {class:'prow'}, [labelEl(a.id, it.label, it.sub), el('div',{class:'inp'},[a]), el('div',{class:'inp'},[b])]));
       } else if (it.t === 'agefx'){
         sec.appendChild(el('div', {class:'prow'}, [el('span', {class:'rl', text:'基準年の年齢'}), el('span', {class:'fx', id:'age-0'}), el('span', {class:'fx', id:'age-1'})]));
       } else if (it.t === 'fx'){
@@ -735,6 +743,8 @@ function flows(p){
       let liv = p.living*12 * (young >= 85 ? 1-p.cut85/100 : young >= 75 ? 1-p.cut75/100 : 1);
       if (!(al[0] && al[1])) liv *= p.single/100;
       F.living[t] = liv*f;
+      // 退職した翌年に、前年の給与にかかる住民税・国民健康保険料などを一度に払う（生活費に上乗せして表示）
+      for (let i=0;i<2;i++) if (al[i] && t === p.retireIn[i] + 1) F.living[t] += p.retTax[i]*f;
       if (p.asOf + t >= p.travelFrom && p.asOf + t <= p.travelUntil){ F.travel[t] = p.travel*12*f; ear[t] += F.travel[t]; }
       if (p.cars > 0 && old <= p.driveUntil){
         const n = (p.oneCarFrom && old >= p.oneCarFrom) ? Math.min(1, p.cars) : p.cars;
@@ -744,7 +754,7 @@ function flows(p){
       for (let i=0;i<2;i++){
         if (!al[i]) continue;
         if (a[i] >= p.medFrom[i]) med += p.medical[i]*12;
-        if (a[i] >= p.careFrom[i]) med += p.care[i]*12;         // 介護・施設費
+        if (a[i] >= p.careFrom[i] && (!p.careYears[i] || a[i] < p.careFrom[i] + p.careYears[i])) med += p.care[i]*12; // 介護・施設費
         if (t < p.retireIn[i]) wk += p.preWork[i]*12;          // 退職するまでの給与
         else if (a[i] < p.workUntil[i]) wk += p.work[i]*12;    // 退職後に働いて得る収入
       }
@@ -841,6 +851,24 @@ function marketParams(p){
   const varE = (1-js)*(1-js)*sd[0]*sd[0] + js*js*sd[1]*sd[1] + 2*js*(1-js)*corr[0][1]*sd[0]*sd[1];
   return {m, L, js, drag, geo:{E: meanE - varE/2, B: mu[2] - sd[2]*sd[2]/2, C: mu[3] - sd[3]*sd[3]/2}};
 }
+/* インフレ率のぶれ：前の年のずれを6割引き継ぐ。全世界株（円建て）との相関0.3。変動金利・現金はずれの半分だけ翌年に追随 */
+const INFL_AR = 0.6, INFL_FX = 0.3, FLOAT_K = 0.5;
+// 物価連動国債の税引後の名目リターン（利子と、物価で増えた元本の両方に約20%課税）
+const linkNet = (real, infl) => ((1 + real)*(1 + infl) - 1)*(1 - 0.20315);
+let ZI = null;
+function inflDraws(){
+  if (ZI) return ZI;
+  // 株・債券の乱数とは別の列（ぶれを0にすると、これまでと同じ結果になる）
+  let s = 20261002 >>> 0;
+  const rnd = () => { s = (s + 0x6D2B79F5) | 0; let t = Math.imul(s ^ (s>>>15), 1|s); t = (t + Math.imul(t ^ (t>>>7), 61|t)) ^ t; return ((t ^ (t>>>14)) >>> 0) / 4294967296; };
+  ZI = new Float32Array(NMAX*TMAX);
+  for (let i=0;i<ZI.length;i+=2){
+    const u = rnd() || 1e-12, v = rnd(), r = Math.sqrt(-2*Math.log(u));
+    ZI[i] = r*Math.cos(2*Math.PI*v);
+    if (i+1 < ZI.length) ZI[i+1] = r*Math.sin(2*Math.PI*v);
+  }
+  return ZI;
+}
 function returns(p, n, T){
   const Zs = draws(), P = marketParams(p);
   const re = new Float64Array(n*T), rb = new Float64Array(n*T), rc = new Float64Array(n*T);
@@ -855,7 +883,29 @@ function returns(p, n, T){
     const k = i*T+t;
     re[k] = (1-js)*r[0] + js*(r[1]-drag); rb[k] = r[2]; rc[k] = r[3];
   }
-  return {re, rb, rc, geo:P.geo};
+  const out = {re, rb, rc, geo:P.geo, ratio:null};
+  const sig = p.inflVol/100, wf = Math.min(1, p.bondFloat/100), wl = Math.min(p.bondLink/100, 1 - wf);
+  if (sig <= 0 && wf <= 0 && wl <= 0) return out;
+  // インフレ率を年ごとにぶらす（AR(1)）。ratio = その道筋の物価 ÷ 予想どおりのインフレで進んだ物価
+  const mu = p.inflation/100, lr = p.linkReal/100, Zi = inflDraws();
+  const sdInn = sig*Math.sqrt(1 - INFL_AR*INFL_AR), ratio = new Float64Array(n*T);
+  for (let i=0;i<n;i++){
+    let dev = 0, idx = 1; // dev = インフレ率の平均からのずれ
+    for (let t=0;t<T;t++){
+      const k = i*T+t, o = (i*TMAX + t)*NA, prev = dev;
+      ratio[k] = idx;
+      // 円安で物価が上がる年は、全世界株の円での値上がりも大きくなりやすい（Zs[o] は全世界株の乱数）
+      dev = INFL_AR*dev + sdInn*(INFL_FX*Zs[o] + Math.sqrt(1 - INFL_FX*INFL_FX)*Zi[i*TMAX + t]);
+      const pi = mu + dev;
+      idx *= (1 + pi)/(1 + mu);
+      const fl = Math.max(0.0004, p.bondRet/100 + FLOAT_K*prev); // 変動金利：前の年のずれに半分だけ追随
+      rb[k] = (1-wf-wl)*rb[k] + wf*fl + wl*linkNet(lr, pi);
+      if (sig > 0) rc[k] = Math.max(Math.min(0, p.cashRet/100), rc[k] + FLOAT_K*prev);
+    }
+  }
+  out.geo = Object.assign({}, P.geo, {B: (1-wf-wl)*P.geo.B + wf*p.bondRet/100 + wl*linkNet(lr, mu)});
+  out.ratio = sig > 0 ? ratio : null;
+  return out;
 }
 /* 1本の道筋(n=1)用の、毎年一定の平均的なリターン */
 function steadyReturns(geo, T){
@@ -926,6 +976,9 @@ function simulate(p, net, R, n, T, store, start, trace, spend){
       if (cap < 1){ const over = E - cap*(C+B+E); if (over > 0){ E -= over; B += over; } }
     }
   };
+  // インフレ率がぶれる場合、生活費・年金などはその道筋の物価で動く（旅行・車用の国債 fb は予想どおりの額を払う）
+  const ratio = R.ratio, fb = R.fb;
+  const netAt = (i, t) => ratio ? (net[t] + fb[t])*ratio[i*T+t] - fb[t] : net[t];
   let ok = 0; const failT = store ? new Int16Array(n).fill(-1) : null;
   for (let i=0;i<n;i++){
     let dead = false;
@@ -934,7 +987,7 @@ function simulate(p, net, R, n, T, store, start, trace, spend){
       if (trace) trace.init = {C: w*wc, B: w*wb, E: w*ws};
       for (let t=0;t<T;t++){
         if (sevYear[t] > 0) w += sevYear[t];
-        w -= net[t];
+        w -= netAt(i, t);
         if (w <= 0){ dead = true; if (failT) failT[i] = t; break; }
         const k = i*T+t;
         w *= 1 + ws*R.re[k] + wb*R.rb[k] + wc*R.rc[k];
@@ -948,7 +1001,7 @@ function simulate(p, net, R, n, T, store, start, trace, spend){
       if (trace) trace.init = {C, B, E};
       for (let t=0;t<T;t++){
         if (sevYear[t] > 0){ E += sevYear[t]; refill(t, false, true); }
-        const x = net[t];
+        const x = netAt(i, t);
         if (x < 0) C -= x;
         else {
           let rest = x, mv = Math.min(C, rest); C -= mv; rest -= mv;
@@ -1166,6 +1219,7 @@ function run(){
   const bn = baseNet(F), net = new Float64Array(T);
   for (let t=0;t<T;t++) net[t] = bn[t] - pen[0][t] - pen[1][t];
   const R = returns(p, n, T);
+  R.fb = F.fromBond;
   const store = new Float32Array(n*T);
   const start = p.assets - F.bond0, spend = spendByYear(F);
   const sim = simulate(p, net, R, n, T, store, start, null, spend);
@@ -1182,11 +1236,21 @@ function run(){
     while (fi < fails.length && fails[fi] <= t){ fc++; fi++; }
     cum[t] = fc/n;
   }
+  // 「今の価値」表示用：インフレ率がぶれる場合は、道筋ごとの物価で割り戻してから並べる
+  let pcReal = null;
+  if (R.ratio){
+    pcReal = qs.map(() => new Float64Array(T));
+    for (let t=0;t<T;t++){
+      for (let i=0;i<n;i++) col[i] = (store[i*T+t] + F.bond[t]) / R.ratio[i*T+t];
+      col.sort();
+      qs.forEach((q,j) => pcReal[j][t] = col[Math.floor(q*(n-1))]);
+    }
+  }
   // 収支表用: 毎年平均的なリターンが続いた場合の1本の道筋
   const led = new Float32Array(T), trace = {C:new Float64Array(T), B:new Float64Array(T), E:new Float64Array(T)};
   const one = simulate(p, net, steadyReturns(R.geo, T), 1, T, led, start, trace, spend);
   const goneAt = one.failT[0];
-  state.res = {p, T, F, pen, net, pc, cum, ok:sim.ok, fails, n, geo:R.geo, led, trace, goneAt, bn, R, start, spend};
+  state.res = {p, T, F, pen, net, pc, pcReal, cum, ok:sim.ok, fails, n, geo:R.geo, led, trace, goneAt, bn, R, start, spend};
   renderVerdict(); drawFan(); drawCF(); renderLedger(); renderReview();
   scheduleHeat();
 }
@@ -1287,7 +1351,7 @@ function renderVerdict(){
     return '父' + age + '歳まで ' + pct1(r.cum[t]) + '%';
   }).join('・');
   add('資金が尽きる確率', pct1(r.fails.length / r.n) + '%', byAge + '（' + fm(r.n) + '通り中' + fm(r.fails.length) + '通り）');
-  add('最後の年の残高（中央値）', fOku(r.pc[2][r.T-1] / f(r.T-1)), state.real ? '今の価値に換算' : '将来の金額');
+  add('最後の年の残高（中央値）', fOku(fanPc(r)[2][r.T-1] / f(r.T-1)), state.real ? '今の価値に換算' : '将来の金額');
   const s0 = Math.max(0, p.claim[0]-p.ages[0]), s1 = Math.max(0, p.claim[1]-p.ages[1]);
   const until = Math.min(r.T, Math.max(s0, s1));
   let draw = 0; for (let t=Math.max(0, p.retireMin); t<until; t++) draw += r.net[t] / f(t);
@@ -1336,8 +1400,11 @@ function xTicks(T0, T1, width){
   return out;
 }
 
+/* 資産グラフの分布。「今の価値」でインフレ率がぶれる場合は道筋ごとに割り戻した分布を使う（値は defl で割って表示） */
+const fanPc = r => state.real && r.pcReal ? r.pcReal : r.pc;
 function drawFan(){
   const r = state.res; if (!r) return;
+  const pc = fanPc(r);
   const box = $('fan'), W = Math.max(300, box.clientWidth), p = r.p, T = r.T;
   const defl = t => state.real ? Math.pow(1+p.inflation/100, t) : 1;
   const H = W < 560 ? 250 : 310;
@@ -1360,7 +1427,7 @@ function drawFan(){
   });
   const rows = Math.max(1, rowEnd.length), mt = 10 + rows*15;
   const y0 = H - mb;
-  let ymax = 0; for (let t=0;t<T;t++) ymax = Math.max(ymax, r.pc[4][t]/defl(t));
+  let ymax = 0; for (let t=0;t<T;t++) ymax = Math.max(ymax, pc[4][t]/defl(t));
   const ticks = niceTicks(ymax, 5), top = ticks[ticks.length-1];
   const y = v => y0 - (v/top)*(y0-mt);
   let s = '<svg viewBox="0 0 '+W+' '+H+'" height="'+H+'" role="img" aria-label="資産残高のばらつき"><g class="ax">';
@@ -1369,12 +1436,12 @@ function drawFan(){
   xTicks(0, T-1, W).forEach(t => { s += '<text x="'+x(t)+'" y="'+(y0+16)+'" text-anchor="middle">'+(YEAR0+t)+'</text><text x="'+x(t)+'" y="'+(y0+31)+'" text-anchor="middle">父'+(p.ages[0]+t)+'・母'+(p.ages[1]+t)+'</text>'; });
   s += '</g>';
   const band = (hi, lo) => {
-    let d = ''; for (let t=0;t<T;t++) d += (t?'L':'M') + x(t).toFixed(1) + ',' + y(r.pc[hi][t]/defl(t)).toFixed(1);
-    for (let t=T-1;t>=0;t--) d += 'L' + x(t).toFixed(1) + ',' + y(r.pc[lo][t]/defl(t)).toFixed(1);
+    let d = ''; for (let t=0;t<T;t++) d += (t?'L':'M') + x(t).toFixed(1) + ',' + y(pc[hi][t]/defl(t)).toFixed(1);
+    for (let t=T-1;t>=0;t--) d += 'L' + x(t).toFixed(1) + ',' + y(pc[lo][t]/defl(t)).toFixed(1);
     return d + 'Z';
   };
   s += '<path class="fan-outer" d="'+band(4,0)+'"/><path class="fan-inner" d="'+band(3,1)+'"/>';
-  let md = ''; for (let t=0;t<T;t++) md += (t?'L':'M') + x(t).toFixed(1) + ',' + y(r.pc[2][t]/defl(t)).toFixed(1);
+  let md = ''; for (let t=0;t<T;t++) md += (t?'L':'M') + x(t).toFixed(1) + ',' + y(pc[2][t]/defl(t)).toFixed(1);
   s += '<path class="fan-line" d="'+md+'"/>';
   s += '<g class="ev">';
   evs.forEach(e => { const px = x(e.t); s += '<line x1="'+px+'" x2="'+px+'" y1="'+(10 + e.row*15 + 4)+'" y2="'+y0+'"/><text x="'+(e.end ? px-4 : px+4)+'" y="'+(10 + e.row*15 + 2)+'"'+(e.end ? ' text-anchor="end"' : '')+'>'+e.s+'</text>'; });
@@ -1385,11 +1452,11 @@ function drawFan(){
     t = Math.max(0, Math.min(T-1, t)); box.dataset.t = t;
     const px = x(t);
     cx.setAttribute('x1', px); cx.setAttribute('x2', px); cx.setAttribute('visibility','visible');
-    cd.setAttribute('cx', px); cd.setAttribute('cy', y(r.pc[2][t]/defl(t))); cd.setAttribute('visibility','visible');
+    cd.setAttribute('cx', px); cd.setAttribute('cy', y(pc[2][t]/defl(t))); cd.setAttribute('visibility','visible');
     showTip(cxp, cyp, () => {
       tipHead(t, p);
       const lab = ['下位10%','下位25%','中央値','上位25%','上位10%'];
-      [4,3,2,1,0].forEach(j => tipRow(j===2 ? 'var(--fan-line)' : j===1||j===3 ? 'var(--fan-inner)' : 'var(--fan-outer)', fm(r.pc[j][t]/defl(t)), lab[j], j===2));
+      [4,3,2,1,0].forEach(j => tipRow(j===2 ? 'var(--fan-line)' : j===1||j===3 ? 'var(--fan-inner)' : 'var(--fan-outer)', fm(pc[j][t]/defl(t)), lab[j], j===2));
       tip.appendChild(el('div', {class:'sep'}));
       tipRow(null, pct1(r.cum[t]) + '%', 'この年までに尽きる確率');
     });
